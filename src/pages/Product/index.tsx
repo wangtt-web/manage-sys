@@ -20,13 +20,13 @@ import { useRef, useState } from 'react';
 export default function Order() {
     const [visible, setVisible] = useState(false);
     const [currentProduct, setCurrentProduct] = useState(null);
-    const actionRef = useRef<ActionType>(null)
+    const actionRef = useRef<ActionType>(null);
 
     const handleDelete = async (id: string | number) => {
         deleteProduct(id).then((res) => {
             if (res?.success) {
                 notification.success({ message: '删除成功' });
-                actionRef?.current?.reload()
+                actionRef?.current?.reload();
             } else {
                 notification.error({ message: res?.message });
             }
@@ -80,7 +80,7 @@ export default function Order() {
         }
         if (res?.success) {
             notification.success({ message: res?.message });
-            actionRef?.current?.reload()
+            actionRef?.current?.reload();
         } else {
             notification.error({ message: res?.message });
         }
@@ -91,7 +91,7 @@ export default function Order() {
     return (
         <PageContainer title="产品管理">
             <ProTable
-            actionRef={actionRef}
+                actionRef={actionRef}
                 columns={columns}
                 options={false}
                 toolBarRender={() => [
